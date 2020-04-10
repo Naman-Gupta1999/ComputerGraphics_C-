@@ -1,0 +1,75 @@
+ #include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<graphics.h>
+void main()
+{
+
+ int gmode,gdriver=DETECT;
+ int x,y,rx,ry,p0,p1,x1,y1;
+ initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+
+  cout<<"enter the coordinates";
+ cin>>x>>y;
+ cout<<"enter the value of rx and ry";
+ cin>>rx>>ry;
+ x1 = 0;
+ y1 = ry;
+ p0 = (ry*ry) - ((rx*rx)*ry) +((1/4)*(rx*rx));
+
+
+ while(2*(ry*ry)*x1 < 2*(rx*rx)*y1)
+ {
+  if(p0<0)
+  {
+  x1 = x1 + 1;
+   p0 = p0+(2*(ry*ry)*x1)+(ry*ry);
+
+   putpixel(x1+x,y1+y,WHITE);
+   putpixel(-x1+x,y1+y,WHITE);
+   putpixel(-x1+x,-y1+y,WHITE);
+   putpixel(x1+x,-y1+y,WHITE);
+  /* putpixel(-x1+x,-y1+y,WHITE);
+   putpixel(-y1+y,-x1+x,WHITE);
+   putpixel(-y1+y,x1+x,WHITE);
+   putpixel(x1+x,-y1+y,WHITE);
+   */
+  }
+  else
+  {
+  x1 = x1 + 1;
+  y1 = y1 - 1;
+  p0 = p0 + (2*(ry*ry)*x1)-(2*(rx*rx)*y1)+(ry*ry);
+  putpixel(x1+x,y1+y,WHITE);
+   putpixel(-x1+x,y1+y,WHITE);
+   putpixel(-x1+x,-y1+y,WHITE);
+   putpixel(x1+x,-y1+y,WHITE);
+    }
+ }
+ p1 = ((ry*ry)*((x1+1/2)*(x1+1/2))) + ((rx*rx)*((y1-1)*(y1-1))) - ((rx*rx)*(ry*ry));
+
+ while(2*(ry*ry)*x1 >= 2*(rx*rx)*y1 || y1 == 0){
+  if(p1>0)
+  {
+   y1=y1 - 1;
+   p1 = p1*(2*(rx*rx)*y1)+(rx*rx);
+   putpixel(x1+x,y1+y,WHITE);
+   putpixel(-x1+x,y1+y,WHITE);
+   putpixel(-x1+x,-y1+y,WHITE);
+   putpixel(x1+x,-y1+y,WHITE);
+
+
+  }
+  else
+  {
+  x1 = x1 + 1;
+  y1 = y1 -1;
+  p1 = p1+(2*(ry*ry)*x1)-(2*(rx*rx)*y1)+(rx*rx);
+     putpixel(x1+x,y1+y,WHITE);
+   putpixel(-x1+x,y1+y,WHITE);
+   putpixel(-x1+x,-y1+y,WHITE);
+   putpixel(x1+x,-y1+y,WHITE);
+}
+ }
+ getche();
+ }

@@ -1,0 +1,51 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<graphics.h>
+void main()
+{
+ int gmode,gdriver=DETECT;
+ initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+ int x,y,r,D0,x1,y1;
+
+ cout<<"enter the coordinates";
+ cin>>x>>y;
+ cout<<"enter the radius";
+ cin>>r;
+ x1 = 0;
+ y1 = r;
+ D0 = 3 - (2*r);
+ while(x1<y1)
+ {
+ if(D0<0)
+ {
+ D0 = D0 + (4 * x1)+6;
+ x1 = x1 + 1;
+ y1 = y1;
+ putpixel(x1+x,y1+y,WHITE);
+ putpixel(y1+y,x1+x,WHITE);
+ putpixel(y1+y,-x1+x,WHITE);
+ putpixel(-x1+x,y1+y,WHITE);
+ putpixel(-x1+x,-y1+y,WHITE);
+ putpixel(-y1+y,-x1+x,WHITE);
+ putpixel(-y1+y,x1+x,WHITE);
+ putpixel(x1+x,-y1+y,WHITE);
+ }
+ else
+ {
+ D0 = D0 +(4*(x1 - y1)) + 10;
+ x1 = x1 + 1;
+ y1 = y1 - 1;
+ putpixel(x1+x,y1+y,WHITE);
+ putpixel(y1+y,x1+x,WHITE);
+ putpixel(y1+y,-x1+x,WHITE);
+ putpixel(-x1+x,y1+y,WHITE);
+ putpixel(-x1+x,-y1+y,WHITE);
+ putpixel(-y1+y,-x1+x,WHITE);
+ putpixel(-y1+y,x1+x,WHITE);
+ putpixel(x1+x,-y1+y,WHITE);
+
+ }
+ }
+getch();
+}

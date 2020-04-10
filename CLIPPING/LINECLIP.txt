@@ -1,0 +1,136 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gmode,gdriver=DETECT;
+initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+int x1,y1,x2,y2;
+int ix,iy,m;//intersection points and slope
+cout<<"enter the value of x1 and y1";
+cin>>x1>>y1;
+
+cout<<"enter the value of x2 and y2";
+cin>>x2>>y2;
+
+int xmin,xmax,ymin,ymax;
+cout<<"enter the value of xmin and xmax";
+cin>>xmin>>xmax;
+
+cout<<"enter the value of ymin and ymax";
+cin>>ymin>>ymax;
+
+int inside = 0;//0000
+int above = 8; //1000
+int below = 4;//0100
+int right = 2;//0010
+int left = 1;//0001
+int al = 9;//1001
+int ar = 10;//1010
+int bl = 5;//0101
+int br = 6;//0110
+int lie=inside;
+
+if(x1>xmin && x2>xmin)
+{
+ lie = left;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+else if(x1>xmax && x2>xmax)
+{
+ lie = right;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+if(y1<ymin && y2<ymin)
+{
+ lie = below;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+else if(y1>ymax && y2>ymax)
+{
+ lie = above;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+if(x1<xmin && y1<xmin && x2>xmax && y2>ymax)
+{
+ lie = al;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+else if(x1<xmin && y1<xmin && x2<ymin && y2<ymin)
+{
+ lie = bl;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+if(x1>xmax && y1>xmax && x2>ymax && y2>ymax)
+{
+ lie = ar;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+else if(x1>xmax && y1>xmax && x2<ymin && y2<ymin)
+{
+ lie = br;
+ putpixel(x1,y1,WHITE);
+ putpixel(x2,y2,WHITE);
+}
+
+if(lie!=0)
+{
+ cout<<"the value lie outside the window clipped";
+}
+else
+{
+ cout<<"the value lie inside the window";
+}
+rectangle(xmin,ymax,xmax,ymin);
+line(x1,y1,x2,y2);
+//where the slope in all is y2-y1/x2-x1
+m =(y2-y1)/(x2-x1);
+//left side
+if(x1<xmin && y1<xmin)
+{
+x1,y1 = left;
+ix = xmin;
+iy = m * ((xmin - x1)+y1);
+line(ix,iy,x2,y2);
+}
+//right side
+else if(x1>xmax && y1>xmax)
+{
+x1,y1 = right;
+ix = xmax;
+iy = m * ((xmax-x1)+y1);
+line(ix,iy,x2,y2);
+}
+//top side
+else if(x1<ymin && y1<ymin)
+{
+x1,y1 = above;
+ix = x1 + ((ymax-y1)/m);
+iy = ymax;
+line(ix,iy,x2,y2);
+}
+//bottom
+else if(x1>ymax && y2>ymax)
+{
+x1,y1 = below;
+ix = x1 +((ymin-y1)/m);
+iy = ymin;
+line(ix,iy,x2,y2);
+}
+getche();
+}

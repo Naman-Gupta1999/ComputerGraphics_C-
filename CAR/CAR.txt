@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+
+void main()
+{
+ int gmode, gdriver=DETECT;
+ int tx;
+ initgraph(&gdriver, &gmode,"C://TC//BGI");
+ /*
+ rectangle(50,350,250,400);
+ circle(100,400,25);
+ circle(200,400,25);
+ line(100,300,200,300);
+ line(75,350,100,300);
+ line(200,300,225,350);
+ */
+
+ for(tx=5;tx!=500;tx++){
+ rectangle(50+tx,350,250+tx,400);
+ circle(100+tx,400,25);
+ circle(200+tx,400,25);
+ line(100+tx,300,200+tx,300);
+ line(75+tx,350,100+tx,300);
+ line(200+tx,300,225+tx,350);
+ cleardevice();
+
+ }
+ getche();
+ }

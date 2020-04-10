@@ -1,0 +1,33 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<graphics.h>
+void main()
+{
+int gmode,gdriver=DETECT;
+initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+int rx=600;
+int ry=650;
+circle(500,200,15);
+line(500,215,500,300);
+line(500,250,480,220);
+line(500,250,520,220);
+line(500,300,480,320);
+line(500,300,520,320);
+
+circle(rx-500,200,15);
+line(rx-500,215,rx-500,300);
+line(rx-500,250,rx-480,220);
+line(rx-500,250,rx-520,220);
+line(rx-500,300,rx-480,320);
+line(rx-500,300,rx-520,320);
+
+
+circle(rx-500,ry-200,15);
+line(rx-500,ry-215,rx-500,ry-300);
+line(rx-500,ry-250,rx-480,ry-220);
+line(rx-500,ry-250,rx-520,ry-220);
+line(rx-500,ry-300,rx-480,ry-320);
+line(rx-500,ry-300,rx-520,ry-320);
+getche();
+}

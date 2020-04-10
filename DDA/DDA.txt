@@ -1,0 +1,42 @@
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gmode,gdriver=DETECT;
+int x1,y1,x2,y2,M,dx,dy,i,x,y;
+initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+cout<<"Enter First coordinate x1 :";
+cin>>x1;
+cout<<"Enter First coordinate y1 :";
+cin>>y1;
+cout<<"Enter Second coordinate x2 :";
+cin>>x2;
+cout<<"Enter Second coordinate y2 :";
+cin>>y2;
+
+
+dx=x2-x1;
+dy=y2-y1;
+if(dx>=dy)
+{
+M=dx;
+}
+else
+{
+M=dy;
+}
+
+dx=dx/M;
+dy=dy/M;
+x=x1;
+y=y1;
+i=1;
+while(i<=M){
+putpixel(x,y,WHITE);
+x=x+dx;
+y=y+dy;
+i++;
+}
+getche();
+}

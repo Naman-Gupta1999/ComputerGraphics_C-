@@ -1,0 +1,84 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+int gmode,gdriver=DETECT;
+initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+int x , y;
+cout<<"enter the value of x and y";
+cin>>x>>y;
+
+int xmin,xmax,ymin,ymax;
+cout<<"enter the value of xmin and xmax";
+cin>>xmin>>xmax;
+
+cout<<"enter the value of ymin and ymax";
+cin>>ymin>>ymax;
+
+int inside = 0;//0000
+int above = 8; //1000
+int below = 4;//0100
+int right = 2;//0010
+int left = 1;//0001
+int al = 9;//1001
+int ar = 10;//1010
+int bl = 5;//0101
+int br = 6;//0110
+
+int lie=inside;
+
+if(x>xmin)
+{
+ lie = left;
+ putpixel(x,y,WHITE);
+}
+else if(x>xmax)
+{
+ lie = right;
+ putpixel(x,y,WHITE);
+}
+
+if(y<ymin)
+{
+ lie = below;
+ putpixel(x,y,WHITE);
+}
+else if(y>ymax)
+{
+ lie = above;
+ putpixel(x,y,WHITE);
+}
+if(x<xmin && y>ymax)
+{
+ lie = al;
+ putpixel(x,y,WHITE);
+}
+else if(x<xmin && y<ymin)
+{
+ lie = bl;
+ putpixel(x,y,WHITE);
+}
+if(x>xmax && y>ymax)
+{
+ lie = ar;
+ putpixel(x,y,WHITE);
+}
+else if(x>xmax && y<ymin)
+{
+ lie = br;
+ putpixel(x,y,WHITE);
+}
+
+if(lie!=0)
+{
+ cout<<"the value lie outside the window clipped";
+}
+else
+{
+ cout<<"the value lie inside the window";
+}
+rectangle(xmin,ymax, xmax,ymin);
+getche();
+}

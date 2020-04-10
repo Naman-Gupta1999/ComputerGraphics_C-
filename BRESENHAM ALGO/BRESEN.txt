@@ -1,0 +1,57 @@
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<stdio.h>
+void main()
+{
+int gmode, gdriver=DETECT;
+initgraph(&gdriver,&gmode,"C:\\TC\\BGI");
+int x1,y1,x2,y2;
+//int max;
+int Dx,Dy;
+int p0,p1;
+int x,y;
+//first coordinates
+cout<<"enter the coordinates x1 and y1";
+cin>>x1>>y1;
+//second coordinates
+cout<<"enter the coordinates x2 and y2";
+cin>>x2>>y2;
+//calculating the steps
+Dx = x2 - x1;
+Dy = y2 - y1;
+float max = Dy/Dx;
+p0 = 2 * Dy - Dx;
+x = x1;
+y = y1;
+putpixel(x,y,WHITE);
+if(max<1)
+{
+for (int i=1;i<Dx;i++)
+{
+ if(p0>0)
+ {
+ p1 = p0 + 2*Dy - 2*Dx;
+ x = x + 1;
+ y = y + 1;
+ putpixel(x,y,WHITE);
+ }
+ else
+ {
+ p1 = p0 + 2*Dx;
+ x = x + 1;
+ putpixel(x,y,WHITE);
+ }
+// p0 = p0 + p1;
+// int i = 1;
+// while(i<=Dx-1);
+// {
+//  putpixel(x,y,WHITE);
+//  i++;
+ }  }
+else
+{
+cout<<"As your max value is <0 and >1 so its not applicable";
+}
+getche();
+}
